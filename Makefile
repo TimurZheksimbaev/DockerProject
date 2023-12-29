@@ -1,9 +1,19 @@
-all :; install compose
+all: install compose
 
-build :; docker build -t docker_fastapi_app .
+# build docker image, pass as a parameter image name
+# for example: make build name=dokcer_app
+build :
+	docker build -t $(name) .
 
-run :; docker run -p 8000:8000 docker_fastapi_app
+# run docker container, pass image name as parameter `name`
+# for example: make run name=doker_app
+run :
+	docker run -p 8000:8000 $(name)
 
-install :; pip install -r requirements.txt
+# install all libraries
+install :
+	pip install -r requirements.txt
 
-compose :; docker compose up --build
+# docker compose command
+compose :
+	docker compose up --build
