@@ -46,4 +46,4 @@
 ---
 >*By default port is 8000, but you can change it how you want*
  
->*Just remember that if your app is using some port X you need to bind it to Dokcer run port* 
+>*Just remember that if your app is using some port X you need to bind it to Docker run port* 
