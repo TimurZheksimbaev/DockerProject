@@ -18,6 +18,9 @@
     ├── src/
     │   ├── main.py
     │   └── NetworkManager.py
+    ├── tests/
+    │   ├── TestDogAPI.py
+    │   └── TestMainApp.py
     ├── templates/
     │   └── index.html
     ├── docker-compose.yaml
