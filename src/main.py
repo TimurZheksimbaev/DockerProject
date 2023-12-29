@@ -1,9 +1,10 @@
+import asyncio
 import random
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
-from NetworkManager import ImageLoader
+from src.NetworkManager import ImageLoader
 
 app = FastAPI()
 IMAGE_URLS = []
@@ -13,8 +14,7 @@ IMAGE_URLS = []
 async def make_api_call():
     global IMAGE_URLS
     loader = ImageLoader()
-    IMAGE_URLS = loader.multithreaded_api_call()
-
+    IMAGE_URLS = loader.multithreaded_get_random_dogs()
 
 @app.get("/")
 async def root():
@@ -27,7 +27,5 @@ def get_dog(request: Request):
     data = {"title": "Funny dogs", "image": IMAGE_URLS[random.randint(0, 19)]}
     return templates.TemplateResponse("index.html", {"request": request, **data})
 
-
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
-

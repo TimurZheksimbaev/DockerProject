@@ -7,6 +7,7 @@ import httpx
 class ImageLoader:
     def __init__(self):
         self.baseUrl = "https://random.dog/woof.json"
+        self.num_of_images = 20
 
     @lru_cache(maxsize=256)
     def get_random_image_url(self):
@@ -18,16 +19,14 @@ class ImageLoader:
             print("Could not fetch data")
             exit(0)
 
-    def multithreaded_api_call(self):
+    def multithreaded_get_random_dogs(self):
 
+        results = []
         def thread_target():
             results.append(self.get_random_image_url())
 
-
-        num_threads = 20
         threads = []
-        results = []
-        for i in range(num_threads):
+        for i in range(self.num_of_images):
             thread = Thread(target=thread_target)
             thread.start()
             threads.append(thread)
@@ -36,3 +35,4 @@ class ImageLoader:
             thread.join()
 
         return results
+

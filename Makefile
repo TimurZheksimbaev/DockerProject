@@ -17,3 +17,8 @@ install :
 # docker compose command
 compose :
 	docker compose up --build
+
+# run tests
+test:
+	python -m unittest ./tests/TestDogAPI.py
+	python -m unittest ./tests/TestMainApp.py

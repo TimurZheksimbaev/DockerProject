@@ -18,6 +18,9 @@
     ├── src/
     │   ├── main.py
     │   └── NetworkManager.py
+    ├── tests/
+    │   ├── TestDogAPI.py
+    │   └── TestMainApp.py
     ├── templates/
     │   └── index.html
     ├── docker-compose.yaml
@@ -43,7 +46,11 @@
 - root endpoint `localhost:8000/`
 - dogs endpoint `localhost:8000/dogs`
 - docs `localhost:8000/docs`
----
+
 >*By default port is 8000, but you can change it how you want*
  
 >*Just remember that if your app is using some port X you need to bind it to Dokcer run port* 
+
+
+## *Run tests using `Makefile`*
+    make test
